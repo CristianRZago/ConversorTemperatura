@@ -1,61 +1,62 @@
 /*
-4. Escreva as seguintes funções:
-    a. CparaF – faz a conversão de uma temperatura em graus C para graus F.
-    b. CparaK – faz a conversão de uma temperatura em C para Kelvin (C=K-273)
-    c. KparaC – faz a conversão de K para C.
-    d. KparaF – faz a conversão de K para F (dica: utilize as funções anteriores)
-    e. FparaK – faz a conversão de F para K.
+4. Escreva as seguintes funï¿½ï¿½es:
+    a. CparaF ï¿½ faz a conversï¿½o de uma temperatura em graus C para graus F.
+    b. CparaK ï¿½ faz a conversï¿½o de uma temperatura em C para Kelvin (C=K-273)
+    c. KparaC ï¿½ faz a conversï¿½o de K para C.
+    d. KparaF ï¿½ faz a conversï¿½o de K para F (dica: utilize as funï¿½ï¿½es anteriores)
+    e. FparaK ï¿½ faz a conversï¿½o de F para K.
 
-A seguir, faça um programa que apresente continuamente um menu na tela com
-todas as opções de conversão que você implementou. Uma vez feita a opção, o
-programa lê do teclado o valor a ser convertido e imprime o resultado.
+A seguir, faï¿½a um programa que apresente continuamente um menu na tela com
+todas as opï¿½ï¿½es de conversï¿½o que vocï¿½ implementou. Uma vez feita a opï¿½ï¿½o, o
+programa lï¿½ do teclado o valor a ser convertido e imprime o resultado.
 -----------------------------
 
-MANUTENÇÃO
+MANUTENï¿½ï¿½O
 
-objetivo: atualizar funções e reduzir linhas de código
+objetivo: atualizar funï¿½ï¿½es e reduzir linhas de cï¿½digo
 
 
-Registre quanto tempo você demorou para entender o programa
+Registre quanto tempo vocï¿½ demorou para entender o programa
 - alguns minutos para relembrar quais os objetivos iniciais do programa
 
-Escolha uma alteração a ser feita e registre quanto tempo você demorou para planejar como ela será feita
-- substituir if por switch, diminuir o número de linhas das funções
+Escolha uma alteraï¿½ï¿½o a ser feita e registre quanto tempo vocï¿½ demorou para planejar como ela serï¿½ feita
+- substituir if por switch, diminuir o nï¿½mero de linhas das funï¿½ï¿½es
 
-Registre quanto tempo você demorou para efetuar a alteração
-- 5 minutos para substituição do IF por switch e para remover alguams variáveis das funções e manter somente o return
+Registre quanto tempo vocï¿½ demorou para efetuar a alteraï¿½ï¿½o
+- 5 minutos para substituiï¿½ï¿½o do IF por switch e para remover alguams variï¿½veis das funï¿½ï¿½es e manter somente o return
 
-Registre quanto tempo você demorou para verificar se a alteração foi feita corretamente
-- Os teste foram feitos inserindo um valor e verificando se eles eram compatíveis com valores reais.
+Registre quanto tempo vocï¿½ demorou para verificar se a alteraï¿½ï¿½o foi feita corretamente
+- Os teste foram feitos inserindo um valor e verificando se eles eram compatï¿½veis com valores reais.
 
 */
 
 
-#include<iostream>
+#include <iostream>
+#include <iomanip>
 using namespace std;
 
 float fparac(float Fc){
-    return (Fc-32) / 1.8;
+    return (Fc-32) * 9/5;
 }
 
 float fparak(float Fk){
-    return (Fk-32) /1.8 + 273;
+    return (Fk-32) * 9/5 + 273.15;
 }
 
 float cparaf(float Cf){	
-	return 32 + Cf *1.8;
+	return 32 + (Cf * 9/5);
 }
 
 float cparak(float Ck){
-	return Ck +273;
+	return (Ck + 273.15);
 }
 	
 float kparac(float Kc){
-	return Kc - 273;
+	return (Kc - 273.15);
 }
 
 float kparaf(float Kf){
-	return 32 + (Kf - 273) / 1.8;
+    return (Kf - 273.15) * 9/5 + 32;
 }
 
 int main()
@@ -78,35 +79,37 @@ int main()
 
         cout << "\nTEMPERATURA: "<< endl;
         
+        cout << setprecision(2) << fixed;
+        
         switch(comando){
             case 1:
                 cin >> Fc;
-                cout << "\n\nTEMPERATURA EM CELSIUS: %.2f C" << fparac(Fc) << endl;
+                cout << "\n\nTEMPERATURA EM CELSIUS: C" << fparac(Fc) << endl;
             break;
 
             case 2:
                 cin >> Fk;
-                cout << "\n\nTEMPERATURA EM KELVIN: %.2f K" << fparak(Fk) << endl;
+                cout << "\n\nTEMPERATURA EM KELVIN: K" << fparak(Fk) << endl;
             break;
 
             case 3:
                 cin >> Cf;
-                cout << "\n\nTEMPERATURA EM FAHRENHEIT: %.2f F" << cparaf(Cf) << endl;
+                cout << "\n\nTEMPERATURA EM FAHRENHEIT: F" << cparaf(Cf) << endl;
             break;
 
             case 4:
-				cin >> Fk;
-                cout << "\n\nTEMPERATURA EM KELVIN: %.2f K" << cparak(Ck) << endl;
+				cin >> Ck;
+                cout << "\n\nTEMPERATURA EM KELVIN: K" << cparak(Ck) << endl;
             break;
 
             case 5:
                 cin >> Kc;
-                cout << cout << "\n\nTEMPERATURA EM CELSIUS: %.2f C" << kparac(Kc) << endl;
+                cout << "\n\nTEMPERATURA EM CELSIUS: C" << kparac(Kc) << endl;
             break;
 
             case 6:
                 cin >> Kf;
-                cout << "\n\nTEMPERATURA EM FAHRENHEIT: %.2f F" << kparaf(Kf) << endl;
+                cout << "\n\nTEMPERATURA EM FAHRENHEIT: F" << kparaf(Kf) << endl;
             break;
 
             default:
